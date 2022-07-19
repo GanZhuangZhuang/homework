@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'Button',
   data() {
     return {
       flag: false

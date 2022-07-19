@@ -1,6 +1,7 @@
 <template>
-  <div>
-    table
+  <div class="home">
+    <!-- checkbox index -->
+    <gan-table :column="column" checkbox index></gan-table>
   </div>
 </template>
 
@@ -9,12 +10,29 @@ export default {
   name: 'Table',
   data() {
     return {
-
+      column: [
+        {
+          label: '标题',
+          prop: 'title',
+          type: 'function',
+          callback: (row) => {
+            // 自定义渲染文本
+            // return `<strong>${row.title}</strong>`
+            return `<a href="https://www.baidu.com">${row.title}</a>`
+          }
+        },
+        { label: '日期', prop: 'date' },
+        { label: '姓名', prop: 'name' },
+        { label: '地址', prop: 'address' },
+        { label: '性别', prop: 'sex' }
+      ]
     }
-  }
+  },
+  components: {
+    ganTable: () => import('../components/table/index.vue')
+  },
+  methods: {}
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
