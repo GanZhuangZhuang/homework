@@ -1,38 +1,45 @@
 <template>
   <div class="home">
-    <!-- checkbox index -->
-    <gan-table :column="column" checkbox index></gan-table>
+    <gan-table :column="column" checkbox index>
+      <template v-slot:operation>
+        <el-button type="primary">编辑</el-button>
+        <gan-button type="danger">删除</gan-button>
+      </template>
+    </gan-table>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Table',
+  name: 'Home',
   data() {
     return {
       column: [
         {
-          label: '标题',
-          prop: 'title',
+          label: 'URL地址',
           type: 'function',
-          callback: (row) => {
-            // 自定义渲染文本
-            // return `<strong>${row.title}</strong>`
-            return `<a href="https://www.baidu.com">${row.title}</a>`
+          prop: 'date',
+          callback: (data) => {
+            return `<a href="https://www.baidu.com">${data.name}</a>`
           }
         },
-        { label: '日期', prop: 'date' },
+        // { label: '日期', prop: 'date', width: 500 },
         { label: '姓名', prop: 'name' },
         { label: '地址', prop: 'address' },
-        { label: '性别', prop: 'sex' }
+        { label: '性别', prop: 'sex' },
+        {
+          label: '操作',
+          prop: 'operation',
+          type: 'slot',
+          slot_name: 'operation'
+        }
       ]
     }
   },
   components: {
-    ganTable: () => import('../components/table/index.vue')
+    ganTable: () => import('../components/table/index.vue'),
+    ganButton: () => import('../components/button/index.vue')
   },
   methods: {}
 }
 </script>
-
-<style lang="scss" scoped></style>

@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'index',
+  name: 'ganButton',
   props: {
     type: {
       type: String,

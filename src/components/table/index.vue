@@ -20,6 +20,18 @@
             <div v-html="item.callback && item.callback(scope.row)"></div>
           </template>
         </el-table-column>
+        <!--  -->
+        <el-table-column
+          v-if="item.type === 'slot'"
+          :key="index"
+          :prop="item.prop"
+          :label="item.label"
+        >
+          <template>
+            <!-- {{ index }} -->
+            <slot :name="item.slot_name"></slot>
+          </template>
+        </el-table-column>
 
         <el-table-column
           v-else
@@ -47,28 +59,32 @@ export default {
     return {
       tableData: [
         {
-          title: 'wxj',
+          id: 1,
+          title: '啦啦啦啦啦啦啦',
           date: '2016-05-02',
           name: '张三',
           address: '上海市普陀区金沙江路 1518 号 <div>123546</div>',
           sex: '男'
         },
         {
-          title: 'wxj',
+          id: 2,
+          title: '啦啦啦啦啦啦啦',
           date: '2016-05-04',
           name: '李四',
           address: '上海市普陀区金沙江路 1517 号',
           sex: '男'
         },
         {
-          title: 'wxj',
+          id: 3,
+          title: '啦啦啦啦啦啦啦',
           date: '2016-05-01',
           name: '王五',
           address: '上海市普陀区金沙江路 1519 号',
           sex: '男'
         },
         {
-          title: 'wxj',
+          id: 4,
+          title: '啦啦啦啦啦啦啦',
           date: '2016-05-03',
           name: '赵六',
           address: '上海市普陀区金沙江路 1516 号',
