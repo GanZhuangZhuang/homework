@@ -14,17 +14,25 @@ export default {
         {
           label: '姓名',
           type: 'input',
-          prop: 'name'
+          prop: 'name',
+          required: true
+          // rules: [
+          //   {
+          //     required: true,
+          //     message: '必填'
+          //   }
+          // ]
         },
         {
           label: '密码',
           type: 'input',
-          prop: 'password'
+          prop: 'password',
+          required: true
         }
       ],
       fieldForm: {
-        name: '',
-        password: ''
+        name: '玛玛哈哈',
+        password: '123456'
       }
     }
   },

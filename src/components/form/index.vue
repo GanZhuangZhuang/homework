@@ -1,7 +1,8 @@
 <template>
   <el-form ref="form" :model="field" label-width="80px">
     <el-form-item
-      v-for="item in item"
+      :rules="item.rules"
+      v-for="item in formItem"
       :key="item.label"
       :label="item.label"
       :prop="item.prop"
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import createRules from '@/components/form/createRules'
 export default {
   name: 'ganForm',
   props: {
@@ -22,16 +24,21 @@ export default {
     field: {
       type: Object,
       default: () => ({})
+    },
+    rules: {
+      type: Object,
+      default: () => ({})
     }
   },
   data() {
     return {
-      form: {
-        name: ''
-      }
+      formItem: []
     }
   },
-  methods: {}
+  methods: {},
+  beforeMount() {
+    this.formItem = createRules(this.item)
+  }
 }
 </script>
 
