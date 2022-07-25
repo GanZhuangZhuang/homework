@@ -7,7 +7,6 @@
 <script>
 export default {
   name: 'Form',
-
   data() {
     return {
       formItem: [
@@ -16,12 +15,6 @@ export default {
           type: 'input',
           prop: 'name',
           required: true
-          // rules: [
-          //   {
-          //     required: true,
-          //     message: '必填'
-          //   }
-          // ]
         },
         {
           label: '密码',
