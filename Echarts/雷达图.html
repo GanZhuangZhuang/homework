@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>雷达图</title>
+    <!-- 1.引入echarts.js文件 -->
+    <script src="./lib/echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- 2.准备一个呈现图表的盒子 -->
+    <div style="width: 600px; height: 400px">
+      <script>
+        // 3.初始化echarts实例对象
+        var mCharts = echarts.init(document.querySelector("div"));
+        // 各个维度的最大值
+        var dataMax = [
+          {
+            name: "易用性",
+            max: 100,
+          },
+          {
+            name: "功能",
+            max: 100,
+          },
+          {
+            name: "拍照",
+            max: 100,
+          },
+          {
+            name: "跑分",
+            max: 100,
+          },
+          {
+            name: "续航",
+            max: 100,
+          },
+        ];
+        // 4.准备配置项
+        var option = {
+          radar: {
+            indicator: dataMax,
+            shape: "circle", //配置雷达外层的图形
+          },
+          series: [
+            {
+              type: "radar", //雷达图
+              label: {
+                //标题显示
+                show: true,
+              },
+              //阴影
+              areaStyle: {},
+              data: [
+                {
+                  name: "华为手机1",
+                  value: [80, 90, 80, 82, 90],
+                },
+                {
+                  name: "中兴手机1",
+                  value: [70, 82, 75, 70, 78],
+                },
+              ],
+            },
+          ],
+        };
+        // 5.将配置项设置给echarts实例对象
+        mCharts.setOption(option);
+      </script>
+    </div>
+  </body>
+</html>

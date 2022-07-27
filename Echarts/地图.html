@@ -13,6 +13,44 @@
     <div style="width: 600px; height: 400px; border: 1px solid #f00"></div>
 
     <script>
+      // 空气质量
+      var airData = [
+        { name: "北京", value: 39.92 },
+        { name: "天津", value: 39.13 },
+        { name: "上海", value: 31.22 },
+        { name: "重庆", value: 66 },
+        { name: "河北", value: 147 },
+        { name: "河南", value: 113 },
+        { name: "云南", value: 25.04 },
+        { name: "辽宁", value: 50 },
+        { name: "黑龙江", value: 114 },
+        { name: "湖南", value: 175 },
+        { name: "安徽", value: 117 },
+        { name: "山东", value: 92 },
+        { name: "新疆", value: 84 },
+        { name: "江苏", value: 67 },
+        { name: "浙江", value: 84 },
+        { name: "江西", value: 96 },
+        { name: "湖北", value: 273 },
+        { name: "广西", value: 59 },
+        { name: "甘肃", value: 99 },
+        { name: "山西", value: 39 },
+        { name: "内蒙古", value: 58 },
+        { name: "陕西", value: 61 },
+        { name: "吉林", value: 51 },
+        { name: "福建", value: 29 },
+        { name: "贵州", value: 71 },
+        { name: "广东", value: 38 },
+        { name: "青海", value: 57 },
+        { name: "西藏", value: 24 },
+        { name: "四川", value: 58 },
+        { name: "宁夏", value: 52 },
+        { name: "海南", value: 54 },
+        { name: "台湾", value: 88 },
+        { name: "香港", value: 66 },
+        { name: "澳门", value: 77 },
+        { name: "南海诸岛", value: 55 },
+      ];
       //1. ECharts最基本的代码结构
       //2. 准备中国地图的矢量数据
       //3. 使用Ajax获取矢量地图数据
@@ -21,18 +59,29 @@
       var mCharts = echarts.init(document.querySelector("div"));
       $.get("json/map/china.json", function (ret) {
         // ret 就是中国的各个省份的矢量地图数据
-        // console.log(ret)
         echarts.registerMap("chinaMap", ret);
+        console.log(ret);
         var option = {
           geo: {
             type: "map",
             map: "chinaMap", // chinaMap需要和registerMap中的第一个参数保持一致
-            roam: true, // 设置允许缩放以及拖动的效果
-            label: {
-              show: true, // 展示标签
-            },
             zoom: 1, // 设置初始化的缩放比例
-            center: [87.617733, 43.792818], // 设置地图中心点的坐标
+            center: [108.948024, 34.263161], // 设置地图中心点的坐标
+          },
+          series: [
+            {
+              data: airData,
+              geoIndex: 0,
+              type: "map",
+            },
+          ],
+          visualMap: {
+            min: 0,
+            max: 300,
+            inRange: {
+              color: ["white", "red"],
+            },
+            calculable: true,
           },
         };
         mCharts.setOption(option);

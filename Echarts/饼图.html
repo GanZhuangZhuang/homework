@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>饼图</title>
     <script src="lib/echarts.min.js"></script>
+    <script src="./theme/Echarts7.js"></script>
   </head>
 
   <body>
@@ -15,7 +16,7 @@
       //2. 准备数据[{name:???, value:??? },{}]
       //   淘宝: 11231  京东: 22673  唯品会: 6123  1号店: 8989   聚美优品: 6700
       //3. 将type的值设置为pie
-      var mCharts = echarts.init(document.querySelector("div"));
+      var mCharts = echarts.init(document.querySelector("div"), "Echarts7");
       // pieData就是需要设置给饼图的数据, 数组,数组中包含一个又一个的对象, 每一个对象中, 需要有name和value
       var pieData = [
         {
